@@ -3,7 +3,7 @@ import { getWish } from "../Utilities/LStorage";
 import LSbook from "./LSbook";
 
 
-export const BookContext = createContext(null)
+export const BookContext = createContext(()=>{})
 const WishListBooks = () => {
     
     const [data,setdata]=useState([])
@@ -11,7 +11,7 @@ const WishListBooks = () => {
     useEffect(()=>{
         const savedWishBooks = getWish();
         setdata(savedWishBooks)
-    },[])
+    },[data])
     
     // const handleWishRating=()=>{
     //     const sortedWish = [...data].sort((a,b)=>{return b.rating - a.rating})
@@ -20,9 +20,10 @@ const WishListBooks = () => {
 
     const handleWishRating = () => {
         // console.log("Before sorting:", data);
-        const sortedWish = [...data].sort((a, b) => b.rating - a.rating);
+        const sortedWish = [...data]
+        const sortedWishToChange = sortedWish.sort((a, b) => b.rating - a.rating);
         // console.log("After sorting:", sortedWish);
-        return setdata(sortedWish);
+        setdata(sortedWishToChange);
         // console.log(handleWishRating());
     };
     

@@ -9,8 +9,8 @@ import { ReadBookContext } from "../Components/ReadBooks";
 
 const ListedBook = () => {
     const [idx,setIdx]=useState(0)
-    // const {handleWishRating} = useContext(BookContext) || {}
     const handleReadRating = useContext(ReadBookContext)
+    const handleWishRating = useContext(BookContext) 
     
     return (
         <div className="max-w-screen-xl mx-auto">
@@ -23,8 +23,8 @@ const ListedBook = () => {
                     <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-base font-normal">
                         <li><a onClick={()=>{  
                                             // console.log(handleReadRating);
-                                            // handleWishRating()
                                             handleReadRating()
+                                            handleWishRating()
                                             // console.log(handleWishRating,handleReadRating)
 
                                             // if (typeof handleReadRating === 'function') {

@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { getRead } from "../Utilities/LStorage";
 import LSbook from "./LSbook";
 
-export const ReadBookContext = createContext(null)
+export const ReadBookContext = createContext(()=>{})
 
 const ReadBooks = () => {
     const [data,setData]=useState([])
@@ -20,9 +20,9 @@ const ReadBooks = () => {
         const sortedRead = [...data]
         console.log(sortedRead);
         const sortedToChange= sortedRead.sort((a, b) => b.rating - a.rating);
-        // console.log(sortedToChange);
+        console.log(sortedToChange);
         // console.log("After sorting:", sortedRead);
-        return setData(sortedToChange);
+        setData(sortedToChange);
     };
     
     return (
