@@ -4,7 +4,7 @@
 
 
 
-### 🔗 https://https://heroic-mochi-6f8b17.netlify.app/
+### 🔗 [https://heroic-mochi-6f8b17.netlify.app/]
 
 
 
