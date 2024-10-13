@@ -20,7 +20,6 @@ Live site:
 - Live previews
 - Fullscreen mode
 - Books can be added to wishlist
-- Mobile device responsive
 - Read book details are shown in graph
 - Sorting book list
 - Read book list save to local storage
