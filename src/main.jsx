@@ -12,6 +12,7 @@ import BookDetails from './Pages/bookDetails';
 import { Toaster } from 'react-hot-toast';
 import ReadBooks from './Components/ReadBooks';
 import WishListBooks from './Components/WishListBooks';
+import PagesToRead from './Pages/PagesToRead';
 
 
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
           const book = books.find(book => book.bookId === params.id)
           return book;
         }
+      },
+      {
+        path:'/pages',
+        element:<PagesToRead />
       }
     ]
   },
@@ -55,7 +60,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <Toaster/>
+      <RouterProvider router={router} />
+      <Toaster/>
   </StrictMode>,
 )

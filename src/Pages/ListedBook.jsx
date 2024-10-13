@@ -1,40 +1,40 @@
-import { useContext, useState } from "react";
+import { createContext, useState } from "react";
 import {  Link, Outlet} from "react-router-dom";
-import{BookContext} from '../Components/WishListBooks'
-import { ReadBookContext } from "../Components/ReadBooks";
 
 
-
-
-
+export const ListBookContext = createContext('')
+// export const RatingContext = createContext('')
+// export const PageContext = createContext('')
+// export const PublisherContext = createContext('')
 const ListedBook = () => {
     const [idx,setIdx]=useState(0)
-    const handleReadRating = useContext(ReadBookContext)
-    const handleWishRating = useContext(BookContext) 
+    const[sort,setSort]=useState()
+    // const [rating,setRating]=useState()
+    // const [page,setPage]=useState()
+    // const [publisher,setPublisher]=useState()
+    const handleRating = () =>{
+        setSort('rating')
+    }
+    const handlePage=()=>{
+        setSort('page')
+    }
+    const handlePublisher=()=>{
+        setSort('publisher')
+    }
     
     return (
+        
         <div className="max-w-screen-xl mx-auto">
             <div className="bg-[#1313130c] rounded-2xl">
                 <h1 className="py-8 text-center font-sans text-3xl font-bold">Book</h1>
             </div>
             <div className="text-center my-10 font-sans ">
-                <details className="dropdown ">
+                <details className="dropdown z-50">
                     <summary className="btn m-1 bg-[#23BE0A] text-lg font-semibold hover:bg-[#23BE0A]">Sort By</summary>
-                    <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-base font-normal">
-                        <li><a onClick={()=>{  
-                                            // console.log(handleReadRating);
-                                            handleReadRating()
-                                            handleWishRating()
-                                            // console.log(handleWishRating,handleReadRating)
-
-                                            // if (typeof handleReadRating === 'function') {
-                                            //     handleReadRating();
-                                            // } else {
-                                            //     console.error('handleReadRating is not a function');
-                                            // }
-                                            }}>Rating</a></li>
-                        <li><a>Number of pages</a></li>
-                        <li><a>Publisher year</a></li>
+                    <ul  className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-base font-normal">
+                        <li><a onClick={()=>{handleRating()}}>Rating</a></li>
+                        <li><a onClick={()=>{handlePage()}}>Number of pages</a></li>
+                        <li><a onClick={()=>{handlePublisher()}}>Publisher year</a></li>
                     </ul>
                 </details>
             </div>
@@ -55,9 +55,19 @@ const ListedBook = () => {
                     </div>
                     
                 </div>
-                <Outlet />
+                <ListBookContext.Provider value={sort}>
+                {/* <RatingContext.Provider value={rating}>
+                    <PageContext.Provider value={page}>
+                        <PublisherContext.Provider value={publisher}> */}
+                            <Outlet />
+                        {/* </PublisherContext.Provider>
+                    </PageContext.Provider>
+                </RatingContext.Provider> */}
+                    
+                </ListBookContext.Provider>
             </div>
         </div>
+        
     );
 };
 export default ListedBook;

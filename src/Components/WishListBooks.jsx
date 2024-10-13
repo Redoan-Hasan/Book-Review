@@ -1,40 +1,45 @@
-import { createContext,  useEffect, useState } from "react";
+import {  useContext, useEffect, useState } from "react";
 import { getWish } from "../Utilities/LStorage";
 import LSbook from "./LSbook";
+import { ListBookContext } from "../Pages/ListedBook";
 
 
-export const BookContext = createContext(()=>{})
 const WishListBooks = () => {
-    
+    const rating = useContext(ListBookContext)
     const [data,setdata]=useState([])
-    // console.log(data);
     useEffect(()=>{
         const savedWishBooks = getWish();
         setdata(savedWishBooks)
-    },[data])
-    
-    // const handleWishRating=()=>{
-    //     const sortedWish = [...data].sort((a,b)=>{return b.rating - a.rating})
-    //     setdata(sortedWish)
-    // }
+    },[])
+    if(rating === 'rating'){
+        data.sort((a,b)=>b.rating - a.rating)
+    }
+    else if(rating === 'page'){
+        data.sort((a,b)=>b.totalPages - a.totalPages)
+    }
+    else if(rating === 'publisher'){
+        data.sort((a,b)=>b.yearOfPublishing - a.yearOfPublishing)
+    }
 
-    const handleWishRating = () => {
-        // console.log("Before sorting:", data);
-        const sortedWish = [...data]
-        const sortedWishToChange = sortedWish.sort((a, b) => b.rating - a.rating);
-        // console.log("After sorting:", sortedWish);
-        setdata(sortedWishToChange);
-        // console.log(handleWishRating());
-    };
+
+    // const handleWishRating = () => {
+    //     // console.log("Before sorting:", data);
+    //     const sortedWish = [...data]
+    //     console.log(sortedWish);
+    //     const sortedWishToChange = sortedWish.sort((a, b) => b.rating - a.rating);
+    //     // console.log("After sorting:", sortedWish);
+    //     setdata(sortedWishToChange);
+    //     // console.log(handleWishRating());
+    // };
+    // // console.log(handleWishRating);
     
     return (
-        <BookContext.Provider value={handleWishRating}>
-            <div className="my-10">
+        
+        <div className="my-10">
             {
                 data.map((book,idx)=><LSbook key={idx} book={book} />)
             }
         </div>
-        </BookContext.Provider>
     );
 };
 
