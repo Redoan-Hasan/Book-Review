@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { getRead } from "../Utilities/LStorage";
 import LSbook from "./LSbook";
 import { ListBookContext } from "../Pages/ListedBook";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -55,7 +56,9 @@ const ReadBooks = () => {
     return (
         
             <div>
-                
+                <Helmet>
+                    <title>Listed Books | Finished Books</title>
+                </Helmet>
                     <div className="my-10">
                         {
                             data.map((book,idx)=><LSbook  key={idx} book={book} />)

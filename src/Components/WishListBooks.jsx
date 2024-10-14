@@ -2,6 +2,7 @@ import {  useContext, useEffect, useState } from "react";
 import { getWish } from "../Utilities/LStorage";
 import LSbook from "./LSbook";
 import { ListBookContext } from "../Pages/ListedBook";
+import { Helmet } from "react-helmet-async";
 
 
 const WishListBooks = () => {
@@ -34,11 +35,15 @@ const WishListBooks = () => {
     // // console.log(handleWishRating);
     
     return (
-        
-        <div className="my-10">
-            {
-                data.map((book,idx)=><LSbook key={idx} book={book} />)
-            }
+        <div>
+            <Helmet>
+                <title>Listed Books | Wishlist</title>
+            </Helmet>
+            <div className="my-10">
+                {
+                    data.map((book,idx)=><LSbook key={idx} book={book} />)
+                }
+            </div>
         </div>
     );
 };

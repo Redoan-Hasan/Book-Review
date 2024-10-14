@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import SingleBook from "../Components/SingleBook";
+import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
@@ -7,6 +8,9 @@ const Home = () => {
     
     return (
         <div className="max-w-screen-xl mx-auto">
+            <Helmet>
+                <title>Home | Home</title>
+            </Helmet>
             <div className="flex justify-between items-center bg-[#1313130C] gap-20 rounded-3xl py-[100px] px-[120px]">
                 <div>
                     <h1 className="font-playfair text-6xl font-bold leading-[84px]">Books to freshen up your bookshelf</h1>

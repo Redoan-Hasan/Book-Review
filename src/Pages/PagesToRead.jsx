@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Helmet } from "react-helmet-async";
 import { getWish } from "../Utilities/LStorage";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
@@ -17,6 +18,9 @@ const PagesToRead = () => {
     const lcBooks = getWish()
     return (
         <div className="max-w-screen-xl mx-auto my-10">
+            <Helmet>
+                <title>Wishlist | Pages to read</title>
+            </Helmet>
             <BarChart
                 width={1280}
                 height={700}

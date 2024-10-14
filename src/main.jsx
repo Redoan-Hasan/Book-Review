@@ -13,6 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import ReadBooks from './Components/ReadBooks';
 import WishListBooks from './Components/WishListBooks';
 import PagesToRead from './Pages/PagesToRead';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -60,7 +61,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider>
       <RouterProvider router={router} />
       <Toaster/>
+    </HelmetProvider>
+      
   </StrictMode>,
 )
