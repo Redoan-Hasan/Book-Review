@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { read, wishList } from "../Utilities/LStorage";
+import { Helmet } from "react-helmet-async";
 
 
 const BookDetails = () => {
@@ -26,6 +27,9 @@ const BookDetails = () => {
     }
     return (
         <div className="max-w-screen-xl mx-auto py-14">
+            <Helmet>
+                <title>Book Detail | {bookName}</title>
+            </Helmet>
             <div className="flex gap-12 justify-between items-center">
                 <div className="w-2/4 ">
                     <img className="bg-[#F3F3F3] p-[70px] rounded-lg h-[677px]" src={image} alt="" />
